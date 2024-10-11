@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../../components/sidebar";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,8 +8,15 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
-import CustomSwitch from "../components/customSwitch";
+import CustomSwitch from "../../components/customSwitch";
 import { Outlet } from "react-router-dom";
+import StatusCard from "../../components/dashboardCard"
+import approvedEvent2 from "../../assets/approvedEvent2.svg";
+import pastEvent2 from "../../assets/pastEvents2.svg";
+import pendingEvents2 from "../../assets/pendingEvent2.svg";
+import upcomingEvents2 from "../../assets/upcomingEvents2.svg";
+import EventsTable from "../../components/eventTableDashboard/eventTable"
+import "./dashboard.css";
 const drawerWidth = 240;
 
 const Dashboard = (props) => {
@@ -37,9 +44,15 @@ const Dashboard = (props) => {
     const drawer = (
         <Sidebar /> 
     );
+    const cardsData = [
+        { count: 5, title: 'Pending events', image: pendingEvents2},
+        { count: 15, title: 'Approved events', image: approvedEvent2  },
+        { count: 30, title: 'Upcoming events', image: upcomingEvents2 },
+        { count: 42, title: 'Past events', image: pastEvent2},
+      ];
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex',backgroundColor:'#E7E7E7',height:"100% ",}}>
                  <CssBaseline />
       <AppBar
          position="fixed"
@@ -65,7 +78,7 @@ const Dashboard = (props) => {
           <Outlet />
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center',marginTop:'5%', justifyContent: 'space-between', padding: '40 16px' }}>
        
-          <Typography className="user-dashboard-title">User Dashboard</Typography> {/* Apply the class here */}
+          <Typography className="user-dashboard-title">User Dashboard</Typography> 
         <CustomSwitch  className="Switch"
         checked={checked}
          onChange={handleChange}
@@ -111,13 +124,14 @@ const Dashboard = (props) => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography sx={{ marginBottom: 2 }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua...
-                </Typography>
-                <Typography sx={{ marginBottom: 2 }}>
-                    Consequat mauris nunc congue nisi vitae suscipit...
-                </Typography>
+                <div style={{ display: 'flex',  flexWrap: 'wrap',marginTop:"3%" }}>
+      {cardsData.map((card, index) => (
+        <div key={index} style={{ margin: '10px',width:"23%"}}>
+          <StatusCard count={card.count} title={card.title} image={card.image} />
+        </div>
+      ))}
+    </div>
+    <EventsTable/>
             </Box>
         </Box>
     );

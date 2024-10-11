@@ -1,0 +1,16 @@
+.body{
+    background-color: '#E7E7E7';
+}
+.user-dashboard-title {
+    font-family: 'Montserrat' !important ; /* Apply Montserrat font */
+    font-size: 36px !important; /* Set font size for User Dashboard */
+    font-weight: 700 !important; /* Set font weight for User Dashboard */
+    
+  }
+  @media(max-width:600px)
+{
+    .user-dashboard-title
+    {
+        font-size: 20px !important;
+    }
+}
