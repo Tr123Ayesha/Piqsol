@@ -1,0 +1,37 @@
+.logo-container {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 50px;
+}
+
+.logo-image {
+    width: 20px; 
+    height: 26px; 
+    margin-right: 10px; 
+}
+.logo-text {
+    font-size: 30px; 
+    font-weight: 800;
+    color: #000000; 
+    margin: 0; 
+}
+.backtoHome {
+    padding-top: 40px;
+    padding-left: 10px;
+    display: flex; /* Use Flexbox */
+    align-items: center;
+
+  }
+  .back-home-icon {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+   
+  }
+  .back-to-home-text {
+    font-family: "Montserrat "!important;
+    font-size: 16px !important;
+    font-weight: 300 !important;
+    color: #777777 !important;
+}
